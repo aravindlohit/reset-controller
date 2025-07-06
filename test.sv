@@ -1,3 +1,5 @@
+
+// source chipmunklogic.com
 module test;
   logic rst;
   logic aux_rst;
