@@ -6,7 +6,7 @@ module test;
   logic f_rst;
 int i;
   logic rst1,rst2,rst3;
-  // Reset generator
+  // Reset generato
   
   reset_controller_top  dut_inst ( .i_rst(rst) ,
                                   .i_aux_rst(aux_rst),
