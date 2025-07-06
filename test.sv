@@ -64,8 +64,20 @@ int i;
   end
 
   always #5 clk= ~clk;
+  //assertions to check the  stability of rst and aux_rst before configuring the reset controller
+  property p_stability;
+    @(posedge clk2)
+    ##1 !$stable(rst) |=> $stable(rst) [*2];
+endproperty : p_stability
+
+  property p_stability_2;
+    @(posedge clk2)
+    ##1 !$stable(aux_rst) |=> $stable(aux_rst) [*2];
+endproperty : p_stability
   
-  
+  assert property(p_stability) else $error ("rst is in un defined state");
+
+  assert property(p_stability_2) else $error ("aux_rst is in un defined state");
   
   //assertion-1
   //as per the design filter reset must be asserted for atleast 2 clock cycles 
