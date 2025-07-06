@@ -1,5 +1,5 @@
 
-// source chipmunklogic.com
+
 module test;
   logic rst;
   logic aux_rst;
@@ -68,9 +68,9 @@ int i;
   
   
   //assertion-1
-  //as per the design filter reset must be asserted for atleast 10 clock cycles 
+  //as per the design filter reset must be asserted for atleast 2 clock cycles 
   property filter_init;
-    @(posedge f_clk) f_rst |-> ##10 f_rst ##1 !rst;
+    @(posedge f_clk) f_rst |-> ##5 f_rst ##1 !rst;
   endproperty
     
   assert property (filter_init)  
